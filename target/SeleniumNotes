@@ -1,0 +1,1411 @@
+Selenium NOTES
+
+1- Download the selenium jar file from seleniumhg website--> https://www.selenium.dev/downloads/
+2- Download the chromedriver from --> https://chromedriver.chromium.org/downloads
+3- Add Jar file to your project
+  *File
+  *Project Structure
+  *Module --> Dependency --> click plus button
+  *Find your jar file and add it to your project
+4- Copy paste the chromedriver to your project. 
+5- System.setProperty("webdriver.chrome.driver", "locationOfChromeDriver"); 
+
+Selenium Webdriver
+
+- Selenium works with multiple browser(Chrome, Firefox, Ie, Opera)
+
+- Selenium works with multiple languages (Ruby, Java, C++..)
+
+- Selenium works with multiple operation system (Window, Mac, Linux)
+
+WebDriver driver=new ChromeDriver(); 
+get("url"); --> navigates to website  ---> returns String
+getTitle(); --> gets the title of current page   --> returns String
+getCurrentUrl; --> gets the url of current page   --> returns String 
+getPageSource() --> gets the html of current page   --> returns String
+<h1 name="tech" id="techtorial1">Techtorial Academy</h1> --> webElement
+<h1> is tag
+"name", "id" ----> are attributes
+Techtorial Academy is text
+<h1 name="tech" id="techtorial1">Techtorial Academy</h1> --> webelement
+
+Automation of the Page
+
+1- Find the webElement 
+2- Find the unique locators
+3- Store on the selenium project using findElement(locator); method ---> Webelement name=driver.findelement(By. id("idName"))
+4- you can use the method from WebElement object. 
+Task: 
+find the locator for sign-on button
+get the text of sign-on button. 
+if the text is equals to SIGN-ON print true else print false; 
+HOMEWORK: 
+Get the text for Register, Support and contact and validate them using java. 
+If it is passed print test is passed otherwise print failed. 
+
+
+Sprint starts on Wednesday and ends on Tuesday
+Tuesday --> Sprint demo/review meeting ---> Sprint planning planning
+========================================
+driver.get()
+navigate().to()
+getTitle(); 
+getCurrentUrl(); 
+getPageSource(); 
+navigate().back()
+navigate().forward()
+navigate().refresh()
+
+Locator
+
+We have 8 locators in Selenium
+id, name, className, tagName, linktext, partialLinkText, Xpath, Css selector
+  <h1 name="tech" id="techtorial1" >Techtorial Academy</h1>
+1- h1 is   -------------------------------> tag
+2- name and id is -----------------------> attribute 
+3- Techtorial Academy ------------------------- -> text content
+4- <h1 name="tech" id="techtorial1" >Techtorial Academy</h1>  is-----------------------> webelement
+5- techtorial1 and tech is -----------------------------------------> value for attribute
+1- download jar file for selenium 
+2- download the chromedriver 
+3- System.setProperty("driverName", "location"); 
+If your chrome driver version is not matching with your browser version, the program will throw an exception. Version mismatched, driver version is incompateble with your browser.
+
+NOTE: 
+
+To be able to use the Selenium Classes we need to import them. 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+########################    Locator    #########################
+We have 8 locators in Selenium
+id, name, className, tagName, linktext, partialLinkText, Xpath, Css selector
+To be able store the WebElement we can use findElement() method. 
+Find element method takes one parameter as a locator. 
+Command+F or Control+F on Development Tool
+Then put your value inside the search box.
+
+#########ClassName
+the element needs to have class attribute. Make sure your class value is unique. 
+If you have more than one element with same attribute and value, once we use the findElement() method, we will getting the first matching element. 
+Address:
+class="address"
+Map:
+class="address"
+
+If you want to sendKey the tag of html needs to be <input>. 
+
+##########LinkText
+Element needs to be <a> then you need to get the Text of Webelement to store in your selenium project. 
+<a href="www.techtorialacademy.com">Home</a>
+
+########PartialLinkText
+Partial link text works similiar to link text. When the text is long, we can use partial link text to find our unique webelement. 
+<a id="12" class="sName" href="studentUrl" >Student Name: Muammer</a>
+
+NoSuchElementException --> It means we have located the element wrongly.
+
+IllegalStateException: The driver executable does not exist:/Users/techotrialadmin/IdeaProjects/SeleniumProject/src/SeleniumIntro/
+chromedriver
+1- First read the console(log file).
+2- You need to run in Debug mode.
+TAGNAME
+If you use the tagname to identify the webelement, make sure your tagname is unique. if your tag name is not unique, selenium will get first matching tag name. 
+
+id, name, className, linktext, partialLinkText, TagName, Xpath and Css selector
+
+XML ---> Extensible Markup language
+HTML -----> HyperText Markup Language
+DOM  ------> Document Object Model
+
+
+
+<button>Next Step</button>
+<input id="submit" class="aa" value="SUBMIT">
+Getattribute() --> takes one parameter and get the attribute value from web element. 
+isEnabled() --> when the webelement is enabled, this method will return true, otherwise it will return false
+isSelected() --> if the webelement is selected, this method will return true, otherwise it will return false. 
+
+XPATH
+
+- You can find the webelement using xpath. 
+- Xpath is working with xml documents. 
+XML-- Extensible Markup Language
+HTML --> Hypertext Markup Language
+DOM --> Document Object Model
+
+<person></person>
+
+<carinventory>
+
+<car type="suv"> 
+<brand year="2019">Ford</brand>
+<model>Explorer</model>
+</car>
+
+<car type="convertible"> 
+<brand year="2019">Porsche</brand>
+<model>911</model>
+</car>
+
+<car type="race"> 
+<brand year="2019">Lamborghini</brand>
+<model>Huracan</model>
+</car>
+
+<car type="race"> 
+<brand year="2019">Ferrari</brand>
+<model>488</model>
+</car>
+
+</carinventory>
+
+/carinventory/car[@type='convertible']/model  ====> to find porsche
+/carinventory/car[1]/brand
+
+Task: write the structure to find the 488 model 
+/carinventory/car[@type='race']/model
+/carinventory/car[3]/model
+
+TASK: 
+Go to amazon.com find the webelement of search box using xpath
+
+FindElement Method
+1- Findelement method will return Webelement object--> WebElement
+2- If we are not able to find the element with locators, 
+findelement method will throw NoSuchElement exception
+3- If you have more than one matching element with your locator, find element method will get the first one
+
+FindElements Method
+
+1- It will return list of WebElement --> List<WebElement>
+2- If we are not able to find the element with locators,
+findelements method will return empty list
+
+
+
+
+
+
+
+
+##########################  5/9/2020  #################################
+
+
+
+
+
+
+
+Test Cases --> Excel, Zepyhr(Plugin in jira)
+
+ATDD --> Acceptance Test Driven Development
+
+submit--> sbmt_home
+firstname --> frst_name
+
+Hi, 
+
+According attached excel file, I am gonna create my automation script with following ids. While you are developing the functionality please use giving id. 
+Thanks, 
+
+UX design
+XML -- Extensible Markup Language(TestNG, maven->pom.xml)
+(Data store, configuration)
+============================================================
+
+Right click + inspect --> Development Tool
+
+Command + F --> Mac
+
+Ctrl + F --> windows
+
+href="https://www.techtorialacademy.com/programs"
+
+//a[@href='https://www.techtorialacademy.com/programs'] --> 6 matching webelement
+
+(//a[@href='https://www.techtorialacademy.com/programs'])[3] --> I do not recommend to use index number in xpath. 
+
+//div[@class='col-md-12 col-xs-12 col-sm-12']//a[@href='https://www.techtorialacademy.com/programs']  --> Without index number
+
+//div[@class='col-md-9 col-xs-12 col-sm-9']//a ---> There are 10 matching webelement
+
+Country/State/city/village/street/person/child
+
+USA/DC/Washington/Donald Trump/Ivanka
+
+//USA//President//Donald Trump//Ivanka --> 2
+
+=====================================
+
+
+
+Absolute Xpath
+
+1- Main key is using the single slash in abolute
+2- You can not skip the tag in node order
+3- It is not useful
+4- You can combine absolute xpath with relative xpath
+Usa --> president --> Washington --> Devon Ave --> Donald Trump  ---> Ivanka
+/USA/President/Washington/Devon/Donald Trump/Ivanka
+
+=====================================
+
+Relative Xpath
+
+1- It starts searching in the middle of HTML DOM and it will find all mathcing element in DOM
+2- We are using double slash for Relative Xpath
+//Ivanka[@fatherName="Donald Trump"]
+
+=====================================
+
+Contains() method in XPATH
+
+Element E has attribute A that contains the text of 't'
+
+//E[contains(@A,'t')]
+
+E--> tagname
+
+A--> attribute
+
+t --> value
+
+<div>
+<li>
+<p name="Country-1">country -1<p>
+<p name="City-1">city-1<p>
+<li>
+<p>country-2<p>
+<p name="City-2">city-2<p> 
+<li>
+<p>country -3
+
+//p[contains(@name,'Country')]
+//p[contains(text(),'country')]
+//p[start-with(@name,'Country')]
+//p[start-with(text(),'country')]
+//p[ends-with(@name,'1')]
+
+TASK
+
+Find the element which contains the text as a city? 
+//p[contains(text(),'city')] 
+
+Find the element which has text that ends with 2
+//p[ends-with(text(),'2')]
+=============================================
+
+
+??????????????????????   How do you handle the dynamic elements in Selenium?   ???????????????? 
+
+
+I am using the xpath to find the dynamic elements. In xpath we have couple of method like 
+contains(), start-with(), ends-with(), text(). 
+
+=============================================
+
+CSS Selector
+
+To be able to find the web element in HTML we can use CSS selector to find. 
+
+tagname[attributeName='value']
+a[href='/notification_message']
+a[href*='https://www.techtorialacademy.com/']
+
+Afternoon
+
+Differences between Xpath and CSS selector
+Geckodriver
+Maven
+
+================================
+
+1- Differences between Xpath and CSS selector
+
+CSS Selector 
+* CSS selector is faster than the xpath
+* CSS is more readable and writable 
+* CSS can not handle the text() and index
+* CSS has not slash (like absolute / and relative //)
+* We can not navigate between parent and child using slashes
+tagname[attribute='value']
+
+Xpath
+* xpath is slow than css selector
+* xpath has more syntax and little complicated than css
+* Xpath can handle the text() and index numbers
+* We can navigate between parent and child using relative or absolute xpaths
+* Xpath has more functions than css selector
+//tagName[@attribute='value']
+
+===============================================
+
+2- Using Mozilla Firefox Browser for cross browser testing
+
+geckodriver --> To be able to launch the firefox browser, we need to use geckodriver. 
+
+v26 version of GeckoDriver will work firefox browser version >=60 
+
+MAVEN
+
+1- It is a tool where we can centralize and manage our dependencies. 
+ChromeDriver, GeckoDriver, Selenium
+
+2- We can track the version of dependencies from one location
+
+3- Maven has pom.xml file where we can store the configuration
+POM --> Project Object Model
+
+4- .m2 --> All your dependencies will be installed inside .m2 file in your computer
+
+windows --> find your username of computer and look for the .m2
+
+mac --> ~/.m2
+
+===============================================
+
+Maven Dependency
+
+1- Selenium Webdriver VERSION-3.14 --> for automation 
+
+2- WebDriverManager bonigarcia VERSION 3.8.1 --> It help us to download the ChromeDriver, geckodriver etc and also it maintain the driver version as well. 
+
+3- 
+
+
+
+###############################   5/10/2020    ######################
+
+
+TASK: 
+Go to google search with selenium 
+Validate all the results related with Selenium. 
+Find the titles and validate titles has Selenium keyword.
+
+==========================================
+
+?????????????????????????????   What is Maven?   ???????????????????????????
+Maven is a tool where we can manage and centralize our dependencies. 
+m2 folder is the file where my dependencies are downloaded. 
+Where my dependencies stored? 
+pom.xml file 
+POM --> Project Object Model
+Xml -- extensible markup language
+We are using pom.xml file for configuration in maven project. 
+
+==========================================
+
+1- Selenium
+2- WebDriverManager
+WebDriver helps us to download our driver. We just need to call the methods related with driver. 
+For Chrome Browser
+WebDriverManager.chromedriver().setup(); 
+For Firefox Browser
+WebDriverManager.firefoxdriver().setup();
+
+==========================================
+
+3- TestNG Basic
+TestNG is the testing tool where you can use annotations and make the assertion. 
+@Test annotation in testng
+Assertions in testng
+NOTES: 
+* Inside class we can have more than one Test annotation
+* Method names should be different if you have same parameter but we can use same name different parameter(method overloading)
+* Test annotation will execute with ascending order of method name. 
+Hard Assert
+// In hard assertion, once assert failed next line will not be executed.
+// it will throw the exception right away
+ 
+ TASK
+Go to amazon 
+search with Phone
+Get the title and validate it has phone keyword
+M2 file location
+Windows
+c:\Users\YourName\. m2 
+
+Mac
+~/.m2 
+
+BREAK UNTIL 14.15
+
+
+
+TestNG 
+
+Select Class
+
+To be able to handle the dropdown boxes on the webpage, we need to use Select Class. 
+Select class is coming from selenium. 
+* We can only select class, if the tag for dropdown box is select. 
+
+
+??????????????????????????? How do you handle dropdown in Selenium? ????????????????????????
+
+I am using Select Class. 
+
+How many different ways you can select the option in select class? 
+
+1- selectByVisibleText
+2- selectByIndex
+3- selectByValue
+
+
+Multiple Select
+In select tag we need have "multiple" attribute, means name of the attribute is multiple. 
+
+===============================================
+
+Maven
+pom.xml
+
+TestNG
+We will be creating the testNG framework. @Test annotation. 
+We can use TestNG for Assertion and Verification
+Assert.assertEquals();
+Assert.assertTrue();
+
+Select Class
+To be able to handle the dropdown, we are using the select class. 
+* tagname should be select
+* selectByVisibleText()
+* selectByIndex()
+* selectByValue() --> you need value attribute
+* deselectByVisibleText()
+* deselectByIndex()
+* deselectByValue() --> you need value attribute
+* getAllSelectedOptions()
+* getOptions()
+
+
+MultiSelect Option
+We need to have attribute of "multiple" in select tag
+
+=============================================
+
+Challenge
+How we can avoid to open different chrome browser for each test annotation? 
+
+
+
+
+!##################################5/12/2020###################################
+
+
+CheckBox
+
+isSelected() --> this is mostly used for checkboxes and radio button. 
+It will return true if checkbox or radio is selected. 
+
+submit() method --> to be able to submit method element attribute type should be submit and this element should be inside form tag
+
+<form>
+<input type="submit" class="nav-input" value="Go" tabindex="20">
+</form>
+Under the div tag with input which has type value is submit. 
+//div
+/input[@type='submit']
+StaleElementException
+If the element is not available in DOM anymore we will get staleElementException
+===================================================
+Select Class
+1- selectByValue
+2- selectByIndex
+3- selectByVisibleText
+cars.com
+Actions Class In Selenium
+To be able to perform the mouse and keyboard action, we need to Actions class in Selenium. 
+
+Example, 
+
+1- drag and drop one element one place to another place
+2- Right click
+3- Click and Hold the Shift
+
+Action is an interface.
+
+We need to use build() and perform() method in Actions class implementation. 
+If you use the perform() method from Actions class, you do not need to use the build() method. 
+if you use the Action interface, you need to use the build() and perform(). 
+Build()--> it will combine all the actions and create the one action on top the actions. 
+perform() --> it will perform the action according our implementation. 
+Actions is a class. 
+
+1- 
+Action is an interface. 
+driver.findelement("").sendkey(""); 
+WebElement box=driver.findelement("");
+box.sendKey("")
+
+First Implementation
+Actions actions=new Actions(driver); 
+actions.contextClick(element).perform(); 
+Second Implementation
+Actions actions=new Actions(driver); 
+Action action=actions.contextClick(element).build(); 
+// return type of build is action. 
+action.perform()
+
+
+
+1. Create 10 pull requests to other's github users.
+2. Create 5 projects.
+3. Add 10 people to every project as a collabortor.
+4. Download 10 projects from github
+
+
+
+
+
+
+
+
+
+5/16/2020
+
+
+
+Actions --> it is class in Selenium
+Action --> It is interface in selenium
+Performing mouse and keyboard action. 
+Right Click --> contextClick(); --> it is coming actions class. 
+build() --> it will build the actions which you provided. It is coming Actions class.
+perform() --> it is coming Action interface. This time we need to use the build() method. 
+perform() --> it is coming from Actions class. You do not need to use the build method.
+A convenience method for performing the actions without calling build() first. 
+WebDriver driver=new ChromeDriver(); 
+Actions actions=new Actions(driver); 
+NOTE: you do not need to use the action interface. 
+1- Implemantation
+Action action=actions.contextClick().build(); --> Return type of this build is action. 
+action.perform(); 
+2- Implemantation
+actions.contextClick().perform(); --> perform is coming from the Actions class. 
+============================
+Hover Over to the element
+moveToElement(Element); 
+actions.moveToElement(element).perform(); 
+==========================
+Click two times using mouse
+actions.doubleClick().perform();
+actions.moveToElement(element).doubleClick().perform(); 
+actions.doubleClick(element).perform(); 
+doubleClick(WebElement target) ---> perform the double click actions in the middle of giving parameter. 
+===========================
+Drag And Drop 
+dragAndDrop(sourceElement, targetElement); 
+     /*
+        1- move to element
+        2- click the element
+        3- click the shift button on keyboard
+        to be able to click the shift button we need to user keyDown(element,Keys) method.
+        In Keys is ENUM. Representations of pressable keys that aren't text.
+        KeyDown method will press the Keys which is provided in parameter
+        4- send search value selenium
+        5- unclick the shift button
+        6- double click the element
+        7- right click in the element
+         */
+firstCheckBox
+secondCheckBox
+Assert.assertFalse(firstCheckBox.isSelected); 
+Assert.assertTrue(!firstCheckBox.isSelected); 
+=================================================
+moveByOffset(x, y) --> It will move the mouse from current coordinate to giving coordinates
+
+
+
+
+
+
+
+
+
+
+
+
+5/17/2020
+
+
+
+
+
+
+Actions
+We are using actions class for Mouse and Keyboard actions
+contextClick() --> right click
+doubleClick() --> it will double click
+moveToElement(Webelement) --> it takes one parameter as a element and it moves the mouse 
+in the middle of webelement. HoverOver(moveToElement)
+moveByOffSet(x, y) --> it moves the mouse provided coordinates.  
+clickAndHold() --> it will click and hold the mouse in current location of mouse
+clickAndHold(WebElement) --> it will click and hold the mouse on top of provided webelement
+release()  --> it will release the mouse in current location of mouse
+release(WebElement) ---> it will release the mouse for provided webelement
+build() ---> return type of this build method is Action. It will combine all the actions which we provided. 
+actions.clickAndHold().moveToElement(WebElement).relase().build()
+If we are using the Action interface we need to use the build
+perform() --> it will perform for all your actions. 
+We have two perform method one is coming from the Actions class and other is coming from the Action interface. 
+If We are using the perform() method from Action interface I need to use build() method. 
+However, if the perform() is coming from Actions class I don't need to use the build(). 
+Keys --> In selenium Keys is the enum values. Enum values are constant. 
+Keys are representation of pressable keys that are not text.
+
+Keys.ARROW_DOWN
+Keys.ARROW_UP
+Keys.ARROW_LEFT
+Keys.ARROW_RIGHT
+Keys.SHIFT
+Keys.COMMAND
+Keys.CONTROL
+Keys.ENTER
+
+I can use the keys with Actions Class
+Or I can use the Keys with sendKey() method from weblement
+
+WebElement searchBox=driver.findElement(By.xpath("//a")); 
+searchBox.sendKey("Selenium",Keys.ENTER); 
+Actions actions=new Actions(driver); 
+actions.keyDown(Keys.SHIFT).sendKey(searchBox,"selenium").keyUp(Keys.SHIFT).perform(); 
+actions.keyDown(Keys.SHIFT).sendKey(searchBox,"selenium").keyUp(Keys.SHIFT).build().perform(); 
+
+TASK 
+
+Go to the Website https://demos.telerik.com/kendo-ui/dragdrop/area
+First drag and drop circle to the blue box and validate the text for blue box and orange box
+Second drag and drop circle to the orange box and validate the text for blue box and orange box 
+Business Req
+Orange Box text should be following value: 
+"... Or here."
+
+I am using same Url
+I am using same driver
+
+Put one more implementation that will run before every everything in my class
+@BeforeClass annotation --> is going to run before everything in your class. 
+@AfterClass annotation --> is going to run after everything in your class. 
+
+Those annotations are coming from TestNG. 
+test1-> By default once you navigate to website what is the texts
+test2-> after moving circle to blue box
+test3-> after moving circle to orange box
+
+Implicitly Wait
+
+It will wait until all webElement are avaiable in the webpage. 
+driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+// It will wait 5 sec until the elements are loaded in the page. 
+// If you are not able to find the element after 5 sec. Selenium will throw NoSuchElementException.
+
+==============================================
+
+Switching Window Using Selenium 
+
+Every window has unique Id to identify them. 
+
+getWindowHandle()
+It will return the window Id belongs to current window. Id is String value. 
+
+getWindowHandles()
+It will return the ids for all opened windows. Return type is Set<String>. 
+
+switchTo()
+window()
+
+//a[.='Click Here'] ===> . is equals to text()
+
+CDwindow-DE1B3EA325EF31510BC9DFC4D1E1F275 --> which belongs the my first page
+
+CDwindow-76ECD2E6913185A33BCA4F25866F0589
+
+
+
+
+
+########################################################################################################
+
+
+
+
+package Utils;
+import org.openqa.selenium.WebDriver;
+import java.util.Set;
+
+public class BrowserUtils {
+    public static void switchWindowByTitle(WebDriver driver,String targetTitle){
+        Set<String> ids=driver.getWindowHandles();
+        for(String id: ids){
+            if(!driver.getTitle().equals(targetTitle)){
+                driver.switchTo().window(id);
+            }
+        }
+    }
+    public static void switchWindowByUrl(WebDriver driver, String url){
+        Set<String> ids=driver.getWindowHandles();
+        for(String id:ids){
+            if(!driver.getCurrentUrl().contains(url)){
+                driver.switchTo().window(id);
+            }
+        }
+    }
+    public static void closeWindows(WebDriver driver, String parentId){
+        Set<String> ids=driver.getWindowHandles();
+        for(String id:ids){
+            if(!id.equals(parentId)){
+                driver.switchTo().window(id);
+                driver.close();
+            }
+        }
+    }
+}
+
+
+
+
+############################################################################################################
+
+
+
+
+
+
+
+
+
+
+###########################################5/19/20#############################################
+
+
+
+
+driver.getWindowHandle()--> String id value for current website
+
+driver.getWindowHandles() --> Set<String> id value for all opened window
+
+driver.switchTo().window("IdOfPage"); 
+
+=============================================================
+
+HOW TO HANDLE THE IFRAME? 
+HTML inside HTML
+
+If developer wants to put html inside the html they are creating the frame/iframe and putting new html inside the frame or iframe. 
+
+Selenium will not able to manipulate the iframe, if you do not switch your frame.
+
+If you want to handle the html which is inside another html, you need to switch the frame. 
+We have three different ways to switch the Iframe
+
+1.Index(Iframe index number will start from the 0)
+2.Name
+3.Id
+4.WebElement(iframe)
+driver.switchTo().frame(0); 
+
+Driver can only handle one html code at a time. 
+
+<html>
+<head>Main Page</head>
+    <iframe>
+    <html>
+        <head>Second html</head>
+        <div>
+            <p>New Iframe Text</p>
+        </div>
+    </html>
+    </iframe>
+</html>
+
+option+command+i will open the development tool(MAC)
+
+shift+Cntrl+i for Windows
+
+Interview Questions Related With IFrame
+
+1- How you can switch to main frame? --> defaultContent()
+2- How you can switch to parent frame? --> parentFrame()
+3- How many different ways you can switch the Frame? 
+    1- Id
+    2- Name
+    3- Index
+    4- WebElement
+4- what is the difference between defaultContent() and parentFrame()? 
+    DefaultContent will return back to main html in DOM. 
+    Parent Frame will go ONE STEP back from child frame to parent frame.
+
+
+
+
+
+
+
+
+Page object Model
+
+
+
+1- Record Yourself
+2- Confidence
+3- Improving your soft skill
+======================================
+
+Page Object Model
+Every page goes to the classes. It is design pattern.
+
+Login Page
+Home Page
+Setting Page
+About Page
+What is the important parameters for Good Test Framework? 
+1- Maintainable
+2- Log file
+3- Report
+String baseUrl="http://demo.sentri.com/index.php/"; 
+String loginPage=baseUrl;
+String homePage=baseUrl+"homepage"; 
+String aboutPage=baseUrl+"about"; 
+String adminPage=baseUrl+"admin"; 
+.
+.
+.
+.
+..
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ###################################   05/23/2020    #############################
+
+
+
+
+
+ Page Object Model
+Every page goes to another class. We will be storing the elements inside related class. 
+We need to create the constructor inside page class. 
+This constructor should have PageFactory.initElements(). InitElements method will initialize our webElement. If you do not have PageFactory.initElements() method inside your constructor. You will get nosuchelement exception. 
+PageFactory.initElements(driver, this); 
+We can store our elements inside the page class using @FindBy annotation. @FindBy annotation is coming from Selenium. 
+With @FindBy(xpath="//a") annotation I can use 8 different locators. 
+driver.findElements(xpath="//a"); 
+@FindBy(xpath="//a")
+List<WebElement> textBox; 
+@FindBy(id="saveButton")
+WebElement saveButton; 
+@FindBy(linkText="Home Button")
+WebElement homeButton; 
+initElements(driver, this); method attach our WebElements to driver. 
+What is the advantages of Page Object Model? 
+- Code maintaning
+It will help us to maintain our WebElement from one centralize location. 
+- Code reusability
+After creating the object from page class, we can use the webelement inside another class.
+- Readable
+Since inside page class we have webelements and the method which is related with that. It will increase the readability of your code. 
+
+@Test
+public void test1(){
+    WebElement xbutton=driver.findElement(xpath="//a"); 
+}
+
+MUST Things that you should not forget
+
+1- Create the constructor
+2- inside constructor use PageFactory.initElements(driver, this); 
+3- Create the object from Page class and call the element from page class. 
+NOTE: there is no more driver.findElement(); 
+
+===================================================================
+
+If I have more than one test annotation. What is the run order? 
+--> alphabetical Ascending order
+If I have more than one BeforeClass annotation
+--> alphabetical Ascending order
+
+===================================================
+
+Deep Dive in to the TESTNG
+
+TestNG is an automation tool where we can use more annotation than Junit and achieve end to end testing. 
+
+Advantages of TestNG
+1- It has more annotation than Junit. 
+2- It has own html report
+3- We can build framework on top of TestNG
+4- We can use the testNG assertion. 
+5- We can do parallel testing using TestNG
+6- It has runner xml files.
+
+TestNG
+
+@Test
+@BeforeMethod --> it will run before every test method
+@AfterMethod --> it will run after every test method
+@BeforeClass --> it will run before everything inside the class
+@AfterClass --> it will run after everything inside the class
+@BeforeTest --> It will running before everyhing of above annotations
+@AfterTest --> It will run after everyhing of above annotations
+    NOTE: Before/After test annotation will be connected with our testng.xml file
+
+@BeforeSuite --> it will be running before every other annotation
+@AfterSuite --> it will be running after every other annotation. It will be running AfterTest annotation
+@Parameter--> We can give the parameter to our methods from testng.xml file
+public void area(int height, int width){}
+    
+
+@DataProvider --> It helps us to run our testcases with multiple set of data. 
+
+If we want to run same test case with different data, We will be using @DataProvider annotation. 
+
+// NOTE: If you have more than one same annotation, they will running according their name with ascending order. 
+
+============================================
+
+Annotation will help us to prioritize the execution and it will help us for code reusability, and the code will be more structured.
+
+@BeforeClass
+public void setUP(){
+    driver=new ChromeDriver(); 
+}
+
+==========================================================
+
+Test Parameters
+
+1- Priority
+We can change the order of execution for annotations. 
+We need to give the parameter as priority for our annotation to change execution order. 
+It will start from the 1...... 
+If you provide the priority 0, it will redundant. There is no differences between providing value 0 to priority and not providing any priority. 
+
+2- enabled
+If the value of enabled parameter is equals to true, your test annotation will continue run. If you make the value equals to false, then your test annotation will not run. 
+
+@Test(enable=false) --> test annotation will not run
+
+@Test(enable=true) --> it will continue to run 
+
+3- alwaysRun
+
+If the value is true for alwaysRun, your annotation will run always. 
+alwaysRun=true --> it will run always. 
+
+====================================================================
+
+TestNG runners
+If you want to run multiple classes(can be under same package or under different packages) in one click, you need to create testng xml file. 
+
+XML (Extensible Markup Language)
+pom.xml 
+html
+
+NOTE: IN TesNG xml file we can have suite of tests, it means inside the suite I can have more one test. Inside the we can have multiple classes. 
+
+What is the structure of XML file in testNG?
+suite
+test
+classes
+class
+  <class name="provide the file path of class which you want to run"></class>
+  FilePath will start after java package. 
+
+@BeforeSuite
+@BeforeTest
+@BeforeClass
+@Test
+
+================================================
+
+Click Run ---> Click EditConfiguration --> click regression runner--> click Listeners
+Click +(plus) button --> search emailableReport and add it , then click plus button and search failedReporter --> click apply and close. 
+
+================================================
+
+TestNG interview questions? 
+
+1- What are the testNG annotations?
+-- @Parameter annotation and @Dataprovider annotation 
+-- @Test, before and after annotations 
+
+2- What is xml file in TestNG? 
+-- I use xml file to run multiple classes from one location. 
+-- I have created couple runner classes for my smokeTest, regressionTest(minor regression or major regression) and sanityTest. 
+-- xml file is markeup language
+-- It is for configuration for my test suites
+-- My xml file is starting with suite, test, classes and class
+
+<class name="IFramePractice.IframeIntro">
+    <methods>
+        <include name="test2"></include>
+        <include name="test3"></include>
+        <exclude name="test4"></exclude>
+    </methods>
+</class>
+
+=======================
+
+Parameter annotation 
+DataProvider annotation 
+Singleton Design Pattern for driver
+
+===========================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################   5/26/2020  ######################################
+
+
+
+\ 
+@Test
+@BeforeMethod
+@AfterMethod
+@BeforeClass
+@AfterClass
+@BeforeTest
+@AfterTest
+@BeforeSuite
+@AfterSuite
+priority --> It will prioritize your test annotations
+enabled--> If you do not want to run your test annotation, give the value false to your enabled parameter.
+@Test(enable=false) 
+
+alwaysRun--> true
+
+===============================================
+
+XML runner classes--> markup language 
+
+pom.xml--> dependency
+
+runner.xml --> testng runner classes
+
+1- suite
+    2- test
+        3- classes
+            4- class
+
+================================================
+
+openemr.com--> 
+
+================================================
+
+When we should not automate? 
+
+1- If the functinality is not stable. 
+
+2- ROI--Return of Investment. 
+
+3- If the page is throw away page. 
+
+===============================================
+
+@Parameter annotation 
+
+Parameter is coming from the TestNG. We can give the values from our xml runner for parameter annotation. Parameter annotation will come right before your test method.
+
+Singleton Design Pattern for Driver
+
+Tell me about your framework?
+
+===============================
+
+Your test classes, you need parameter annotation. 
+Your parameter key -- your xml runner class and your method parameter is connected with each other. 
+
+===========================
+
+@Parameters("fname")---> fname must be same with xml runner class parameter name. 
+<parameter name="fname" value="Techtorial"></parameter>
+
+===============================
+
+Singleton Design Pattern
+
+We make sure that our driver will not be instantiated more than one time. 
+
+1- You need to create private constructor
+
+2- We need to put one condition that will check our driver is instantiated or not. If it is already instantiated we will not instantiate one more time. 
+
+=================================
+
+Singleton Design pattern questions? 
+
+1- What is singleton design pattern? 
+While creating an object(instance of an object), we want to instantiate the object only one time. I can achieve this using singleton design pattern.  
+
+2- How do you create singleton design? 
+  * private static instance variable
+  * private constructor
+  * get method for your instance variable
+
+3- Is constructor suppose to be private or not?
+Yes, it should be private.  
+
+4- Where do you use in your framework? 
+ I use singleton design pattern in my Driver class, becasue I want to instantiate my driver only one time. 
+
+=======
+
+Where we instantiate the WebDriver object until now? 
+
+===============
+
+Parallel Testing Tools
+1- TestNG --> free
+2- Selenium Grid --> free
+3- SauceLabs --> it is not free
+
+Parallel testing using TestNG? 
+
+Automation script is taking 1 hour. 
+
+Company is requiring to run in Chrome and Firefox driver. --> total 1 hour
+
+I will launch chrome and firefox drivers at the same time, that's why my total execution time will be 1 hour instead of 2 hours. 
+
+thread-count="3" --> it will allow you to send up to 3 thread. 
+
+==================================================
+
+HOMEWORK
+Update your homework7 with Driver Utily. 
+And Run your automation in Chrome and Firefox driver at the same. 
+1- Create Driver utils
+2- Update your testbase class
+3- Update your runner class. 
+4- Run in different browser at the same time. 
+
+Cross Platform (Mac OS, Window OS, Ubuntu)
+Cross Browser testing(Chrome, Firefox, IE, Opera etc)
+Parallel Testing --> If you are running your automation in different platform or different browser at the same time this is parallel testing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#######################   5/27/2020 ################################
+
+
+
+
+Singleton Design:
+    1- Our instance should static and private
+    2- We need to create the private Constructor
+    3- We need to create getter for our instance
+@Parameter Annotation
+We can give more than one annotation to our method.
+@Parameter("StudentId")
+@Test
+Public void test1(String id) {
+sout(id);
+}
+    1- Inside the xml file we can not have more than one suite but we can have more than one test tag.
+<html>
+</html>
+<suite> name="suite1"
+      <test name="test suite 1">
+          <parameter name="StudentId" value="12345"
+           <classes>
+             <class name="file path of your class which you want to run">
+                    <methods>
+                        <include name="method name"> ---> (test1 or test2)
+                        <exclude name-"method name">
+                    </methods>
+              </class>
+           </classes>
+     </test>
+</suite>
+===================================================
+@DataProvider
+It will help us to run my test annotation with different set of data. 
+==================================================
+Tell me about your https://www.linkedin.com/in/kyial-nur-320b221b2/?
+I created my framework from scratch.
+In my framework, I m using java programming language. Also I m using selenium web driver for UI Automation. I have TestNG to creat the structure for my framework and also I am using it for assertion. At the same time, we can create the Testng report if it is needed. 
+I have another dependency for my driver that is WebDriverManager, it helps to install latest version of driver.
+To be able to centralize and manage my dependency, I m using Maven.
+I implemented Page Object Model that every page element goes to different classes so it helps me to manage my webelement from this classes.
+I have Test packages where I keep all my test cases with @Test annotation. For my Data, I have created another package so it will organize the my data an I am using data provider annotation. 
+I have also another utils package where I keep my browser utils and driver utils.
+I have created the xml runner classes for my regression and smoketests, so I can run multiple classes using xml runner and I can achieve the parallel testing using xml runner files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########################################  6/22/2020  ###########################
+
+
+Soft Assertion
+@Test
+public void test1(){
+    
+    Assert.assertEquals(3,4); 
+    System.out.println("Hello World!"); --> Since line 6 is failing, line 7 will not be executed. 
+    Assert.assertEquals(4,4); 
+}
+Hard Assertion--> When assert fails it will not execute the next line. 
+Soft Assert--> when assert fails, it will go and execute the next line. We can see the the failed assertion in log to identify which assertion is failed. This is mostly used to find small issues on your test cases. 
+@Test
+public void test2(){
+    searchBox.sendKey("David"); 
+    sendButton.click(); 
+    // it open new page 
+    // User needs to see the name of David
+    Assert.assertEquals("John","David"); 
+    confirmButton.click(); 
+    Assert.assertTrue(confirmationMessage.isDisplayed()); 
+}
+// Name:
+// Last Name: 
+// DOB: 
+// City: 
+@Test
+public void test3(){
+    
+    // user need to see following titles on the page 
+    Assert.assertEquals(actualName,"First Name:");
+    Assert.assertEquals(actualLastName,"Last Name:");
+    Assert.assertEquals(actualDOB,"DOB:");
+    Assert.assertEquals(actualCity,"CITY:");
+}
+SoftAssert softAssert=new SoftAssert(); 
+============================================================
+Assertion/Verification or SoftAssert/Hard Assert Difference
+If the assertion(hard assertion) fails my code will not go the next line and execute. 
+In verification, once the assert fails my code will go the next line and execute. 
+In automation, I am using Assert class for hard assert/assertion and I am using SoftAssert class for verification. Those classes are coming from TestNG. 
+============================================================
+Alerts/Popups
+1- OS system alerts/popups--> I can not handle using Selenium. Maybe we can use the Robot class to handle it and robot class is coming from the JAVA.  
+2- HTML based --> You can find the webelement and handle using the selenium.
+3- JavaScript based --> we need to convert the Alert class from Selenium and we have 4 methods which is Accept, Dismiss, getText and sendKey
+Alert alert=driver.switchTo().alert(); 
+Until now we have learned 3 sendkey method 
+1- WebElement
+2- Actions class
+3- Alert class
+
+
+
+
+
+
+
+
+1.TELL ME HOW DO YOU FIND WEB ELEMENT? YOUR Favorite OPTION?
+2. in your company what testing types are you doing with selenium?
+3. Assertion types
+4. List out the technical challenges with Selenium?
+5.What is the difference between verify and assert commands? (hard assertion and soft assertion)
+6. Waits
+7. How you can use “submit” a form using Selenium ?
+8.Explain what is the difference between find elements () and find element ()?
+9.Datadriven framework and Keyword driven?
+10.Explain how to assert text of webpage using selenium
+11.Do you use double click method in Selenium a lot?
+12. Explain how you can handle frames using Selenium
+13. what is Listeners in Selenium WebDriver? It allows customizing TestNG reports or logs. There are two main listeners i.e. WebDriver Listeners and TestNG Listeners (edited) 
+
+
+
+
+
+
+
+
+
+
+ new WebDriverWait(firefoxDriver, pageLoadTimeout).until(
+      webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"))
